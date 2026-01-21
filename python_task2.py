@@ -25,4 +25,4 @@ class Point:
 p=Point(4,6)
 p.display(4,6)
 p.move(7,8)
-p.distance_from_origin(4,6)
+p.distance_from_origin(0,0)
