@@ -9,7 +9,11 @@ tuple1=tuple(marks)
 print(tuple1)
 
 #printing the highest number
-print(max(tuple1))
+tuple_max= tuple1[0]
+for i in tuple1:
+    if i>tuple_max:
+        tuple_max = i
+print(tuple_max)
 
 #conversion from tuple to set
 set1=set(marks)
