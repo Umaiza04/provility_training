@@ -1,7 +1,7 @@
 #managing student marks using list
 marks=[75, 80, 90, 80, 75, 85]
 print(marks)
-total=sum(marks)
+total=len(marks)
 print(total)
 
 #conversion from list to tuple
@@ -14,7 +14,7 @@ print(max(tuple1))
 #conversion from tuple to set
 set1=set(marks)
 print(set1)
-num_marks=sum(set1)
+num_marks=len(set1)
 print(num_marks)
 
 #dictionary creation
