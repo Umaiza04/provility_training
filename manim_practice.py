@@ -1,14 +1,16 @@
+from turtle import fillcolor
 from manim import *
 from numpy import right_shift
 
 class manim_practice(Scene):
     def construct(self):
-        triangle=Triangle().scale(1.5)
-        square=Square().scale(1)
-        circle=Circle()
-        circle.shift(LEFT*3)
-        square.shift(RIGHT*3)
-        self.add(triangle)
-        self.add(square)
-        self.add(circle)
-       
+       text=Text("ROBOGEBRA",color=BLUE,font_size=70).shift(UP*3)
+       triangle=Triangle(fill_color=PINK,fill_opacity=0.5).scale(1.5)
+       square=Square(fill_color=BLUE, fill_opacity=0.5).scale(1)
+       circle=Circle(fill_color=GREEN, fill_opacity=0.5)
+       circle.shift(LEFT*3)
+       square.shift(RIGHT*3)
+       self.add(triangle)
+       self.add(square)
+       self.add(circle)
+       self.add(text)
