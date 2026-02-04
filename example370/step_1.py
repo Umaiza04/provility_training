@@ -5,7 +5,7 @@ config.frame_width=18
 config.pixel_width=2500
 config.pixel_height=2500
 
-class step_1(Scene):
+class BoatDistance(Scene):
     def construct(self):
         self.camera.background_color = WHITE
         P = np.array([-6, -2, 0])
