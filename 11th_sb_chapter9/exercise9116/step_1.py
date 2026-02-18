@@ -28,22 +28,20 @@ class Step_1(Scene):
 
         x_label = axes.get_x_axis_label("x").set_color(BLACK).shift(DOWN*0.3)
         y_label = axes.get_y_axis_label("y").set_color(BLACK).shift(LEFT*0.3+UP*0.1)
+        #parabola
         parabola = axes.plot_parametric_curve( lambda t: np.array([t, t**2, 0]), t_range=[-2, 2],color="#751973",stroke_width=5).set_z_index(-1)
         line = axes.plot( lambda x: 8 - 2*x, x_range=[2, 4],color="#751973",stroke_width=5)
-        parabola_label = MathTex("y = x^2",color=BLACK).rotate(PI/2.7).next_to(
-            axes.coords_to_point(1, 1),)
-        right_label = MathTex("y = 8-2x",color=BLACK).rotate(PI/-2.9).next_to(
-            axes.coords_to_point(2.8, 1.6),)
+        label1 = MathTex("y = x^2",color=BLACK).rotate(PI/2.7).next_to(   axes.coords_to_point(1, 1),)
+        label2 = MathTex("y = 8-2x",color=BLACK).rotate(PI/-2.9).next_to(axes.coords_to_point(2.8, 1.6),)
         dot1 = Dot(axes.coords_to_point(2, 4))
         dot2 = Dot(axes.coords_to_point(3.6, 4))
         dot3 = Dot(axes.coords_to_point(4, 0))
         start_point = axes.coords_to_point(4, 4)
         end_point = start_point + RIGHT * 1.5
-        dot_arrow = Arrow( start=start_point, end=end_point, buff=0, stroke_width=3, color=BLACK,tip_length=0.25).shift(UP*0.06)
-        start_dot = Dot(start_point, color=BLACK).shift(UP*0.06)
+        arrow = Arrow( start=start_point, end=end_point, buff=0, stroke_width=3, color=BLACK,tip_length=0.25).shift(UP*0.06)
+        dot4 = Dot(start_point, color=BLACK).shift(UP*0.06)
+        label3 = MathTex("(2,4)",color=BLACK).next_to(dot1, UP)
+        label4 = MathTex(r"(4,4)\; y=4",color=BLACK).next_to(dot2, UP + RIGHT*0.2+DOWN*1.2)
+        label5 = MathTex("(4,0)",color=BLACK).next_to(dot3, DOWN*3)
 
-        label1 = MathTex("(2,4)",color=BLACK).next_to(dot1, UP)
-        label2 = MathTex(r"(4,4)\; y=4",color=BLACK).next_to(dot2, UP + RIGHT*0.2+DOWN*1.2)
-        label3 = MathTex("(4,0)",color=BLACK).next_to(dot3, DOWN*3)
-
-        self.add(parabola,line,axes,x_label,y_label,parabola_label,right_label,label1,label2,label3,dot_arrow,start_dot)
+        self.add(parabola,line,axes,x_label,y_label,label1,label2,label3,label4,label5,arrow,dot4)
