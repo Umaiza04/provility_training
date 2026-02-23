@@ -7,10 +7,10 @@ config.pixel_height=1000
 class Step_1(Scene):
     def construct(self):
         self.camera.background_color = WHITE
-        A = LEFT*1.5 + DOWN*1
-        B = RIGHT*3 + DOWN*0.8
-        C = RIGHT*3 + UP*1.2
-        D = LEFT*1.5 + UP*1
+        A = LEFT*1.5 + DOWN*0.8
+        B = RIGHT*2.0 + DOWN*1
+        C = RIGHT*2.5 + UP*1
+        D = LEFT*1.0 + UP*1.2
         quad = Polygon(A, B, C, D, color="#015482", stroke_width=4)
         #lines creation
         AB = Line(A, B, color="#015482", stroke_width=4)
@@ -30,9 +30,21 @@ class Step_1(Scene):
              tip = StealthTip(color=BLACK,stroke_width=0.2,length=0.25)
              tip.rotate(angle).move_to(mid)
              return tip
-        tip1 = middle_tip(D, C,D).shift(UP*0.01)
-        tip2 = middle_tip(A,B,B, position=0.5).shift(DOWN*0.01)
-        tip3 = middle_tip(A,D,A, position=0.45)
-        tip4 = middle_tip(B,C,C, position=0.45)
+        tip1 = middle_tip(D, C,D).shift(DOWN*0.01)
+        tip2 = middle_tip(A,B,B, position=0.5).shift(UP*0.01)
+        tip3 = middle_tip(A,D,D, position=0.45).shift(LEFT*0.025)
+        tip4 = middle_tip(B,C,B, position=0.45).shift(RIGHT*0.025)
+        def tick_mark(start, end, position=0.4, size=0.3):
+             point = interpolate(start, end, position)
+             direction = end - start
+             unit_dir = direction / np.linalg.norm(direction)
+             perp = np.array([-unit_dir[1], unit_dir[0], 0])
+             return Line( point - perp * size/2.5, point + perp * size/2.5, color=BLACK, stroke_width=2)
+        tick1 = tick_mark(A,D ,0.59)
+        tick2 = tick_mark(A,D, 0.63)
+        tick3 = tick_mark(B,C, 0.63)
+        tick4 = tick_mark(B,C, 0.59)
+        tick5 = tick_mark(A,B ,0.75)
+        tick6 = tick_mark(D,C, 0.75)
 
-        self.add(quad,AB, BC, CD, DA, label_A, label_B, label_C, label_D,tip1,tip2,tip3,tip4)
+        self.add(quad,AB, BC, CD, DA, label_A, label_B, label_C, label_D,tip1,tip2,tip3,tip4,tick1,tick2,tick3,tick4,tick5,tick6)
