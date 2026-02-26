@@ -4,7 +4,7 @@ config.frame_width=15
 config.pixel_width=2500
 config.pixel_height=2500
 
-class step_1(Scene):
+class Step_1(Scene):
     def construct(self):
         self.camera.background_color = WHITE
         polygon = RegularPolygon(n=6,color="#A00498",stroke_width=6).scale(3.0)
@@ -21,7 +21,7 @@ class step_1(Scene):
         vector3 = MathTex(r"-\vec{a}", color=BLACK).shift(UP*3.1)
         vector4 = MathTex(r"-\vec{b}", color=BLACK).shift(LEFT*2.8+UP*1.6)
         vector5 = MathTex(r"\vec{b}-\vec{a}}", color=BLACK).shift(RIGHT*3.1+UP*1.5)
-        vector6 = MathTex(r"-\vec{b}-\vec{a}}", color=BLACK).shift(LEFT*3.2+DOWN*1.5)
+        vector6 = MathTex(r"\vec{b}-\vec{a}}", color=BLACK).shift(LEFT*3.2+DOWN*1.5)
         vector7 = MathTex(r"2\vec{b}", color=BLACK).shift(UP*0.5+LEFT*0.3)
         vector8 = MathTex(r"\vec{a}+\vec{b}}", color=BLACK).shift(DOWN*0.5+RIGHT*1).rotate(PI/5.5)
 
@@ -31,6 +31,9 @@ class step_1(Scene):
             side = Line(vertices[i], vertices[(i+1) % len(vertices)])
             mid = side.get_midpoint()
             direction = side.copy().rotate(-PI/250).get_unit_vector()
+            if i == 3:  
+                 direction = -direction
+            tipline = Line( mid - 0.25*direction, mid + 0.25*direction ).set_stroke(width=0).add_tip(tip_length=0.32,tip_width=0.25).set_color(BLACK)
             tipline = Line(mid - 0.25*direction, mid + 0.25*direction).set_stroke(width=0).add_tip(tip_length=0.32,tip_width=0.25).set_color(BLACK)
             tips.add(tipline)
 
