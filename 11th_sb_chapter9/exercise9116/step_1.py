@@ -7,41 +7,46 @@ config.pixel_height=2500
 class Step_1(Scene):
     def construct(self):
         self.camera.background_color = WHITE
-        axes = Axes(
-            x_range=[-3, 4.5, 1],
-            y_range=[0, 4.5, 1],
-            x_length=11,
-            y_length=6,
-            axis_config={"include_numbers": True,
-                          "include_tip": True,"tip_length":0.15,"tip_width":0.25,"color": BLACK, "stroke_width":3},
-                           x_axis_config={"numbers_to_include": [ 1, 2, 3, 4],
-                           "decimal_number_config": {
-                           "num_decimal_places": 0,
-                           "color": BLACK, }, },
-            y_axis_config={"numbers_to_include": [ 1, 2, 3,4],
-                           "decimal_number_config": {
-                           "num_decimal_places": 0,
-                           "color": BLACK, },  }, ) 
-        axes.x_axis.get_tick_marks()[0].set_opacity(0)
-        axes.x_axis.get_tick_marks()[1].set_opacity(0)
-        axes.x_axis.get_tick_marks()[2].set_opacity(0)
+        line = NumberLine(
+            x_range=[-5, 5, 1],
+            length=10,
+            include_ticks=False,
+            include_numbers=False,
+            color="#AC4F06",stroke_width=4)
+        line.add_tip(tip_length=0.35,tip_width=0.25)
+        line.add_tip(at_start=True,tip_length=0.35,tip_width=0.25)
+        zero = line.n2p(-1.7)
+        pi_point = line.n2p(1.5)
+        label1 = MathTex("-\\infty", color=BLACK).scale(0.9).next_to(line, LEFT).shift(DOWN*0.4+RIGHT*0.7)
+        label2 = MathTex("\\infty", color=BLACK).scale(0.9).next_to(line, RIGHT).shift(DOWN*0.4+LEFT*0.7)
 
-        x_label = axes.get_x_axis_label("x").set_color(BLACK).shift(DOWN*0.3)
-        y_label = axes.get_y_axis_label("y").set_color(BLACK).shift(LEFT*0.3+UP*0.1)
-        #parabola
-        parabola = axes.plot_parametric_curve( lambda t: np.array([t, t**2, 0]), t_range=[-2, 2],color="#751973",stroke_width=5).set_z_index(-1)
-        line = axes.plot( lambda x: 8 - 2*x, x_range=[2, 4],color="#751973",stroke_width=5)
-        label1 = MathTex("y = x^2",color=BLACK).rotate(PI/2.7).next_to(   axes.coords_to_point(1, 1),)
-        label2 = MathTex("y = 8-2x",color=BLACK).rotate(PI/-2.9).next_to(axes.coords_to_point(2.8, 1.6),)
-        dot1 = Dot(axes.coords_to_point(2, 4))
-        dot2 = Dot(axes.coords_to_point(3.6, 4))
-        dot3 = Dot(axes.coords_to_point(4, 0))
-        start_point = axes.coords_to_point(4, 4)
-        end_point = start_point + RIGHT * 1.5
-        arrow = Arrow( start=start_point, end=end_point, buff=0, stroke_width=3, color=BLACK,tip_length=0.25).shift(UP*0.06)
-        dot4 = Dot(start_point, color=BLACK).shift(UP*0.06)
-        label3 = MathTex("(2,4)",color=BLACK).next_to(dot1, UP)
-        label4 = MathTex(r"(4,4)\; y=4",color=BLACK).next_to(dot2, UP + RIGHT*0.2+DOWN*1.2)
-        label5 = MathTex("(4,0)",color=BLACK).next_to(dot3, DOWN*3)
+        two_label = MathTex("2", color=BLACK).scale(0.9).next_to(zero, DOWN)
+        four_label = MathTex("4", color=BLACK).scale(0.9).next_to(pi_point, DOWN)
+        tick1 = Line( zero + UP*0.2, zero + DOWN*0.2, color=BLACK)
+        tick2 = Line(pi_point + UP*0.2,pi_point + DOWN*0.2,color=BLACK)
 
-        self.add(parabola,line,axes,x_label,y_label,label1,label2,label3,label4,label5,arrow,dot4)
+        circle1 = Circle(radius=0.2, color="#9D0759", stroke_width=3).next_to(zero, DOWN).shift(UP*0.03)
+        circle2 = Circle(radius=0.2, color="#9D0759", stroke_width=3).next_to(pi_point, DOWN).shift(UP*0.03)
+        
+        brace1 = BraceBetweenPoints(line.n2p(-4.5),line.n2p(-1.9),direction=DOWN,color=BLACK)
+        brace2 = BraceBetweenPoints(line.n2p(-1.5),line.n2p(1.3),direction=DOWN,color=BLACK)
+        brace3 = BraceBetweenPoints(line.n2p(1.7),line.n2p(4.5),direction=DOWN,color=BLACK)
+
+        f1 = MathTex("f(x)=x^2", color=BLACK).scale(0.8).next_to(brace1, DOWN)
+        f2 = MathTex("f(x)=8-2x", color=BLACK).scale(0.8).next_to(brace2, DOWN)
+        f3 = MathTex("f(x)=4", color=BLACK).scale(0.8).next_to(brace3, DOWN)
+
+        shift_amt = 0.6
+        two_minus = MathTex("2^{-}", color=BLACK).scale(0.8).move_to(zero + LEFT*shift_amt + UP*0.6)
+        two_plus  = MathTex("2^{+}", color=BLACK).scale(0.8).move_to(zero + RIGHT*shift_amt + UP*0.6).shift(RIGHT*0.3)
+        four_minus = MathTex("4^{-}", color=BLACK).scale(0.8).move_to(pi_point + LEFT*shift_amt + UP*0.6)
+        four_plus  = MathTex("4^{+}", color=BLACK).scale(0.8).move_to(pi_point + RIGHT*shift_amt + UP*0.6).shift(RIGHT*0.3)
+
+        height=0.6
+        arrow1 = Arrow(start=zero + LEFT*0.8 + UP*height,end=zero + LEFT*0.05 + UP*height,buff=0,stroke_width=2,color="#030AA7").shift(DOWN*0.3+LEFT*0.2)
+        arrow2 = Arrow(start=zero + RIGHT*0.8 + UP*height,end=zero + RIGHT*0.05 + UP*height,buff=0,stroke_width=2,color="#030AA7").shift(DOWN*0.3+RIGHT*0.2)
+        arrow3 = Arrow(start=pi_point + LEFT*0.8 + UP*height,end=pi_point + LEFT*0.05 + UP*height,buff=0,stroke_width=2,color="#030AA7").shift(DOWN*0.3+LEFT*0.2)
+        arrow4 = Arrow(start=pi_point + RIGHT*0.8 + UP*height,end=pi_point + RIGHT*0.05 + UP*height,buff=0,stroke_width=2,color="#030AA7").shift(DOWN*0.3+RIGHT*0.2)
+
+        self.add(line,label1,label2,two_label, four_label,brace1, brace2, brace3,f1, f2, f3,
+                 tick1,tick2,two_minus,two_plus,four_minus,four_plus,arrow1 ,arrow2,arrow3,arrow4,circle1,circle2)
