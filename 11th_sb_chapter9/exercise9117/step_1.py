@@ -20,30 +20,25 @@ class Step_1(Scene):
         label1 = MathTex("-\\infty", color=BLACK).scale(0.9).next_to(line, LEFT).shift(DOWN*0.4+RIGHT*0.7)
         label2 = MathTex("\\infty", color=BLACK).scale(0.9).next_to(line, RIGHT).shift(DOWN*0.4+LEFT*0.7)
 
-        # 0 and π labels
         zero_label = MathTex("0", color=BLACK).scale(0.9).next_to(zero, DOWN)
         pi_label = MathTex("\\pi", color=BLACK).scale(0.9).next_to(pi_point, DOWN).shift(DOWN*0.06)
         tick_zero = Line( zero + UP*0.15, zero + DOWN*0.15, color=BLACK)
         tick_pi = Line(pi_point + UP*0.15,pi_point + DOWN*0.15,color=BLACK)
         
-        #braces
         brace1 = BraceBetweenPoints(line.n2p(-4.8),line.n2p(-1.8),direction=DOWN,color=BLACK).shift(DOWN*0.4)
         brace2 = BraceBetweenPoints(line.n2p(-1.6),line.n2p(1.4),direction=DOWN,color=BLACK).shift(DOWN*0.4)
         brace3 = BraceBetweenPoints(line.n2p(1.6),line.n2p(4.8),direction=DOWN,color=BLACK).shift(DOWN*0.4)
 
-        #function labels
         f1 = MathTex("f(x)=\\sin x", color=BLACK).scale(0.8).next_to(brace1, DOWN)
         f2 = MathTex("f(x)=1-\\cos x", color=BLACK).scale(0.8).next_to(brace2, DOWN)
         f3 = MathTex("f(x)=2\\cos x", color=BLACK).scale(0.8).next_to(brace3, DOWN)
 
-        #labels
         shift_amt = 0.6
         zero_minus = MathTex("0^{-}", color=BLACK).scale(0.8).move_to(zero + LEFT*shift_amt + UP*0.6)
         zero_plus  = MathTex("0^{+}", color=BLACK).scale(0.8).move_to(zero + RIGHT*shift_amt + UP*0.6).shift(RIGHT*0.3)
         pi_minus = MathTex("\\pi^{-}", color=BLACK).scale(0.8).move_to(pi_point + LEFT*shift_amt + UP*0.6)
         pi_plus  = MathTex("\\pi^{+}", color=BLACK).scale(0.8).move_to(pi_point + RIGHT*shift_amt + UP*0.6).shift(RIGHT*0.3)
 
-        #arrows creation
         height=0.6
         arrow1 = Arrow(start=zero + LEFT*0.8 + UP*height,end=zero + LEFT*0.05 + UP*height,buff=0,stroke_width=2,color="#030AA7").shift(DOWN*0.3+LEFT*0.2)
         arrow2 = Arrow(start=zero + RIGHT*0.8 + UP*height,end=zero + RIGHT*0.05 + UP*height,buff=0,stroke_width=2,color="#030AA7").shift(DOWN*0.3+RIGHT*0.2)
