@@ -31,8 +31,11 @@ class Step_1(Scene):
             row_labels=row_labels,
             include_outer_lines=True,
             line_config={"color": "#7E4071", "stroke_width": 5},)
+        
         table.get_entries().set_color(BLACK)
         table.scale(0.9)
+        border = SurroundingRectangle(table,color="#7E4071",buff=0)
+        border.set_stroke(width=8)
         table.move_to(ORIGIN)
 
         for r in range(2,5):
@@ -45,4 +48,4 @@ class Step_1(Scene):
         label1= Text("Outcomes", font_size=42,color=BLACK).next_to(table, UP, buff=0.4)
         label2= Text("Envelope", font_size=42,color=BLACK).rotate(PI/2).next_to(table, LEFT, buff=0.6)
 
-        self.add(label1, label2, table)
+        self.add(label1, label2, table,border)
