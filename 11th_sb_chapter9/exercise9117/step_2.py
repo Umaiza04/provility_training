@@ -25,13 +25,13 @@ class Step_1(Scene):
         axes.y_axis.get_tick_marks()[2].set_opacity(0)
         axes.y_axis.get_tick_marks()[3].set_opacity(0)
         axes.y_axis.get_tick_marks()[4].set_opacity(0)
-        axes.y_axis.get_tick_marks()[5].set_opacity(0)
         axes.y_axis.get_tick_marks()[6].set_opacity(0)
+        axes.y_axis.get_tick_marks()[5].shift(UP*0.2)
         axes.y_axis.get_tick_marks()[7].set_opacity(0)
         axes.x_axis.get_tick_marks()[0].set_opacity(0)
-        axes.x_axis.get_tick_marks()[7].set_opacity(0)
-        axes.x_axis.get_tick_marks()[8].set_opacity(0)
         axes.x_axis.get_tick_marks()[6].shift(RIGHT*0.255)
+        axes.x_axis.get_tick_marks()[7].shift(RIGHT*0.3)
+        axes.x_axis.get_tick_marks()[8].shift(RIGHT*0.3)
         axes.x_axis.get_tick_marks()[5].shift(RIGHT*0.1)
         axes.x_axis.get_tick_marks()[1].shift(LEFT*0.1)
         axes.x_axis.add_tip(at_start=True,tip_length=0.35,tip_width=0.25)
@@ -46,7 +46,9 @@ class Step_1(Scene):
             MathTex("-\\pi", color=BLACK),
             MathTex("-\\frac{\\pi}{2}", color=BLACK),
             MathTex("\\frac{\\pi}{2}", color=BLACK),
-            MathTex("\\pi", color=BLACK),]
+            MathTex("\\pi", color=BLACK),
+            MathTex("\\frac{3\\pi}{2}", color=BLACK),
+            MathTex("2\\pi", color=BLACK),]
         xlabels = VGroup()
         for x, label in zip(xticks, xtick_labels):
             label.scale(0.7)
@@ -56,6 +58,7 @@ class Step_1(Scene):
         y_label = MathTex("y", color=BLACK).next_to(axes.y_axis.get_end(), UP).scale(1)
         x_label1 = MathTex("x'", color=BLACK).next_to(axes.x_axis.get_start(), LEFT).scale(1)
         y_label1= MathTex("y'", color=BLACK).next_to(axes.y_axis.get_start(), DOWN).scale(1)
+        y_label2 = MathTex("2", color=BLACK).scale(0.9).next_to(axes.c2p(0, 2), LEFT, buff=0.2).shift(LEFT*0.1)
         
         sin_curve = axes.plot( lambda x: 1.5*np.sin(x),x_range=[-2.1*np.pi, -0],color="#CF0234")
         end_point = sin_curve.get_start()
@@ -68,10 +71,11 @@ class Step_1(Scene):
         shift=0.1
         cos_curve2 = axes.plot(lambda x: 2 * ((1 - np.cos(x+shift)) / 2) ** p, x_range=[0, np.pi],color="#166725")
         dot = Dot(axes.coords_to_point(np.pi, 2),color="#CF0234")
-        label2 = MathTex("f(x)=1-\\cos x", color=BLACK).next_to(axes.coords_to_point(np.pi/2, 3), RIGHT).rotate(PI/3).shift(DOWN*3.4+LEFT*2)
+        label2 = MathTex("f(x)=1-\\cos x", color=BLACK).next_to(axes.coords_to_point(np.pi/2, 3), RIGHT).rotate(PI/3).shift(DOWN*4+LEFT*2.5)
+        horizontal_dash = DashedLine(start=axes.coords_to_point(np.pi, 2),end=axes.c2p(0, 2),color="#AC4F06",dash_length=0.11,stroke_width=4).set_z_index(-1)
        
         x_shift = 0.08
-        cos_curve = axes.plot(lambda x: np.cos(x),x_range=[np.pi + x_shift, 2.5*np.pi],color="#056EEE").shift(UP*0.05)
+        cos_curve = axes.plot(lambda x: np.cos(x),x_range=[np.pi + x_shift, 2.65*np.pi],color="#056EEE").shift(UP*0.05)
         end_point = cos_curve.get_end()
         micro_tip = ArrowTriangleFilledTip(length=0.2, width=0.15, color="#056EEE")
         micro_tip.move_to(end_point).rotate(PI/1.5).shift(UP*0.05+LEFT*0.027)
@@ -116,7 +120,7 @@ class Step_1(Scene):
                       max_tip_length_to_length_ratio=0.3)
         
         self.add(sin_curve,cos_curve2,cos_curve,axes,x_label, y_label,xlabels,zero_minus,zero_plus,x_label1,y_label1,
-                 dot,label1,label2,label3,dot1,vertical_dash, pi_plus, pi_minus,arrow1,arrow2,arrow3,arrow4,axes_origin)
+                 dot,label1,label2,label3,dot1,vertical_dash, pi_plus, pi_minus,arrow1,arrow2,arrow3,arrow4,axes_origin,y_label2,horizontal_dash)
         
         #sin graph
         axes2 = Axes(
@@ -157,8 +161,8 @@ class Step_1(Scene):
         
         axes2.x_axis.add_tip(at_start=True,tip_length=0.35,tip_width=0.25)
         axes2.y_axis.add_tip(at_start=True,tip_length=0.35,tip_width=0.25)
-        y_label1 = MathTex("1", color=BLACK).scale(0.6).next_to(axes2.c2p(0, 1), LEFT, buff=0.2)
-        y_label2 = MathTex("-1", color=BLACK).scale(0.6).next_to(axes2.c2p(0, -1), LEFT, buff=0.2)
+        y_label1 = MathTex("1", color=BLACK).scale(0.6).next_to(axes2.c2p(0, 1), LEFT, buff=0.2).shift(UP*0.2+RIGHT*0.1)
+        y_label2 = MathTex("-1", color=BLACK).scale(0.6).next_to(axes2.c2p(0, -1), LEFT, buff=0.2).shift(UP*0.2+RIGHT*0.1)
         sin_origin = MathTex("0", color=BLACK).scale(0.7).next_to(axes2.c2p(0, 0), DOWN+RIGHT, buff=0.15).shift(UP*0.02)
         
         sine_full = axes2.plot(lambda x: 1*np.sin(x),x_range=[-2.5*PI, 3.5*PI], color="#CF0234", stroke_width=4)
@@ -237,8 +241,8 @@ class Step_1(Scene):
         micro_tip.move_to(end_point).rotate(PI/1.7)
         cosine_full.add(micro_tip)
 
-        y_label1 = MathTex("1", color=BLACK).scale(0.6).next_to(axes3.c2p(0, 1), LEFT, buff=0.2)
-        y_label2 = MathTex("-1", color=BLACK).scale(0.6).next_to(axes3.c2p(0, -1), LEFT, buff=0.2)
+        y_label1 = MathTex("1", color=BLACK).scale(0.6).next_to(axes3.c2p(0, 1), LEFT, buff=0.2).shift(UP*0.2+RIGHT*0.1)
+        y_label2 = MathTex("-1", color=BLACK).scale(0.6).next_to(axes3.c2p(0, -1), LEFT, buff=0.2).shift(UP*0.2+RIGHT*0.1)
         cosin_origin = MathTex("0", color=BLACK).scale(0.7).next_to(axes3.c2p(0, 0), DOWN+RIGHT, buff=0.15).shift(UP*0.02)
         cosine_label = MathTex("f(x) = \\cos x", color=BLACK).scale(0.8).next_to(axes3.c2p(PI, -1), UP).shift(UP*3.3+RIGHT*2)
         cos_dash_up = DashedLine(axes3.c2p(-1.9*PI, 1), axes3.c2p(2.5*PI, 1), color="#AF6F09",stroke_width=4).set_z_index(-1)
