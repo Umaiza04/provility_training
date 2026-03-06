@@ -28,13 +28,13 @@ class Step_1(Scene):
         circle1 = Circle(radius=0.2, color="#9D0759", stroke_width=3).next_to(zero, DOWN).shift(UP*0.03)
         circle2 = Circle(radius=0.2, color="#9D0759", stroke_width=3).next_to(pi_point, DOWN).shift(UP*0.03)
         
-        brace1 = BraceBetweenPoints(line.n2p(-4.5),line.n2p(-1.9),direction=DOWN,color=BLACK)
-        brace2 = BraceBetweenPoints(line.n2p(-1.5),line.n2p(1.3),direction=DOWN,color=BLACK)
-        brace3 = BraceBetweenPoints(line.n2p(1.7),line.n2p(4.5),direction=DOWN,color=BLACK)
+        brace1 = BraceBetweenPoints(line.n2p(-4.7),line.n2p(-1.8),direction=DOWN,color=BLACK).shift(DOWN*0.7)
+        brace2 = BraceBetweenPoints(line.n2p(-1.6),line.n2p(1.4),direction=DOWN,color=BLACK).shift(DOWN*0.7)
+        brace3 = BraceBetweenPoints(line.n2p(1.6),line.n2p(4.7),direction=DOWN,color=BLACK).shift(DOWN*0.7)
 
-        f1 = MathTex("f(x)=x^2", color=BLACK).scale(0.8).next_to(brace1, DOWN)
-        f2 = MathTex("f(x)=8-2x", color=BLACK).scale(0.8).next_to(brace2, DOWN)
-        f3 = MathTex("f(x)=4", color=BLACK).scale(0.8).next_to(brace3, DOWN)
+        f1 = MathTex("x<=2", color=BLACK).scale(0.8).next_to(brace1, DOWN).shift(UP*1)
+        f2 = MathTex("2<x<4", color=BLACK).scale(0.8).next_to(brace2, DOWN).shift(UP*1)
+        f3 = MathTex("x>=4", color=BLACK).scale(0.8).next_to(brace3, DOWN).shift(UP*1)
 
         shift_amt = 0.6
         two_minus = MathTex("2^{-}", color=BLACK).scale(0.8).move_to(zero + LEFT*shift_amt + UP*0.6)
