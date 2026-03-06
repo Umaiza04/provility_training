@@ -59,14 +59,7 @@ class Step_1(Scene):
                       tip_length=0.3,
                       max_tip_length_to_length_ratio=0.3).rotate(PI/-1)
         
-        arrow3 = Arrow(start=axes.coords_to_point(2.05, -0.6),
-                      end=axes.coords_to_point(2.05, -1.4),
-                      buff=0,
-                      stroke_width=6,
-                      color=BLUE,
-                      tip_length=0.3,
-                      max_tip_length_to_length_ratio=0.3).rotate(PI/-1)
-        arrow4 = Arrow(start=axes.coords_to_point(3.3, -0.6),
+        arrow3 = Arrow(start=axes.coords_to_point(3.3, -0.6),
                       end=axes.coords_to_point(4.0, -0.6),
                       buff=0,
                       stroke_width=6,
@@ -74,7 +67,7 @@ class Step_1(Scene):
                       tip_length=0.3,
                       max_tip_length_to_length_ratio=0.3)
         
-        arrow5 = Arrow(start=axes.coords_to_point(4.1, -0.6),
+        arrow4 = Arrow(start=axes.coords_to_point(4.1, -0.6),
                       end=axes.coords_to_point(4.8, -0.6),
                       buff=0,
                       stroke_width=6,
@@ -82,17 +75,10 @@ class Step_1(Scene):
                       tip_length=0.3,
                       max_tip_length_to_length_ratio=0.3).rotate(PI/-1)
         
-        arrow6 = Arrow(start=axes.coords_to_point(4.05, -0.6),
-                      end=axes.coords_to_point(4.05, -1.4),
-                      buff=0,
-                      stroke_width=6,
-                      color=BLUE,
-                      tip_length=0.3,
-                      max_tip_length_to_length_ratio=0.3).rotate(PI/-1)
         limit_left = MathTex("2^-", color=BLACK).scale(0.6).next_to(arrow1, DOWN, buff=0.1).shift(DOWN*0.04)
         limit_right = MathTex("2^+", color=BLACK).scale(0.6).next_to(arrow2, DOWN, buff=0.1)
-        limit_left1 = MathTex("4^-", color=BLACK).scale(0.6).next_to(arrow4, DOWN, buff=0.1).shift(DOWN*0.04)
-        limit_right1 = MathTex("4^+", color=BLACK).scale(0.6).next_to(arrow5, DOWN, buff=0.1)
+        limit_left1 = MathTex("4^-", color=BLACK).scale(0.6).next_to(arrow3, DOWN, buff=0.1).shift(DOWN*0.04)
+        limit_right1 = MathTex("4^+", color=BLACK).scale(0.6).next_to(arrow4, DOWN, buff=0.1)
 
         points_coords = [(-3, 9), (-2, 4), (-1, 1), (0, 0), (1, 1), (2, 4), (3, 2), (4, 0)]
         dots = VGroup()
@@ -105,19 +91,22 @@ class Step_1(Scene):
             MathTex("(-2,4)", color=BLACK).scale(0.6).next_to(axes.c2p(-2, 4), LEFT),
             MathTex("(-1,1)", color=BLACK).scale(0.6).next_to(axes.c2p(-1, 1), LEFT),
             MathTex("(0,0)", color=BLACK).scale(0.6).next_to(axes.c2p(-0, 0),UP),
-            MathTex("(3,2)", color=BLACK).scale(0.6).next_to(axes.c2p(3, 2), RIGHT),)
+            MathTex("(3,2)", color=BLACK).scale(0.6).next_to(axes.c2p(3, 2), RIGHT),
+            MathTex("(2,4)", color=BLACK).scale(0.6).next_to(axes.c2p(2, 4), UR),
+            MathTex("(4,0)", color=BLACK).scale(0.6).next_to(axes.c2p(4, 0), UR),
+            MathTex("(4,4)", color=BLACK).scale(0.6).next_to(axes.c2p(4, 4), RIGHT))
         
         #function
         function = axes.plot(
             lambda x: 4, 
-            x_range=[4, 7],
-            color="#1F2A7C").shift(UP*1)
+            x_range=[0, 7],
+            color="#1F2A7C").shift(UP*0.145).set_z_index(-1)
         end_point = function.get_end()
-        micro_tip = ArrowTriangleFilledTip(length=0.15, width=0.16, color="#1F2A7C")
+        micro_tip = ArrowTriangleFilledTip(length=0.35, width=0.25, color="#1F2A7C")
         micro_tip.move_to(end_point).rotate(PI/1)
         function.add(micro_tip)
-        func_label = MathTex("f(x)=4", color=BLACK).scale(0.8).next_to(axes.c2p(6, 4), DOWN, buff=0.2).shift(UP*1.1)
+        func_label = MathTex("f(x)=4", color=BLACK).scale(0.8).next_to(axes.c2p(0, 4), DOWN, buff=0.2).shift(UR*1)
 
         self.add(axes, parabola, line, dots, parabola_label, line_label, labels,circle1,circle2,
-        arrow1,arrow2,arrow3,arrow4,arrow5,arrow6,limit_left ,limit_right,limit_left1 ,limit_right1,function,func_label,
+        arrow1,arrow2,arrow3,arrow4,limit_left ,limit_right,limit_left1 ,limit_right1,function,func_label,
         x_label,y_label,x_label1,y_label1)
