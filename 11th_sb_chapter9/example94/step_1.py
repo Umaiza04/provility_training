@@ -12,7 +12,7 @@ class Step_1(Scene):
             length=10,
             include_ticks=False,
             include_numbers=False,
-            color=BLACK)
+            color="#B66325",stroke_width=4)
 
         number_line.add_tip(tip_length=0.35,tip_width=0.25)
         number_line.add_tip(at_start=True,tip_length=0.35,tip_width=0.25)
