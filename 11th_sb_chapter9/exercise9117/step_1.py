@@ -25,13 +25,13 @@ class Step_1(Scene):
         tick_zero = Line( zero + UP*0.15, zero + DOWN*0.15, color=BLACK)
         tick_pi = Line(pi_point + UP*0.15,pi_point + DOWN*0.15,color=BLACK)
         
-        brace1 = BraceBetweenPoints(line.n2p(-4.8),line.n2p(-1.8),direction=DOWN,color=BLACK).shift(DOWN*0.4)
-        brace2 = BraceBetweenPoints(line.n2p(-1.6),line.n2p(1.4),direction=DOWN,color=BLACK).shift(DOWN*0.4)
-        brace3 = BraceBetweenPoints(line.n2p(1.6),line.n2p(4.8),direction=DOWN,color=BLACK).shift(DOWN*0.4)
+        brace1 = BraceBetweenPoints(line.n2p(-4.8),line.n2p(-1.8),direction=DOWN,color=BLACK).shift(DOWN*0.7)
+        brace2 = BraceBetweenPoints(line.n2p(-1.6),line.n2p(1.4),direction=DOWN,color=BLACK).shift(DOWN*0.7)
+        brace3 = BraceBetweenPoints(line.n2p(1.6),line.n2p(4.8),direction=DOWN,color=BLACK).shift(DOWN*0.7)
 
-        f1 = MathTex("f(x)=\\sin x", color=BLACK).scale(0.8).next_to(brace1, DOWN)
-        f2 = MathTex("f(x)=1-\\cos x", color=BLACK).scale(0.8).next_to(brace2, DOWN)
-        f3 = MathTex("f(x)=2\\cos x", color=BLACK).scale(0.8).next_to(brace3, DOWN)
+        f1 = MathTex("x<0", color=BLACK).scale(0.8).next_to(brace1, DOWN).shift(UP*1)
+        f2 = MathTex("0<=x<\\pi", color=BLACK).scale(0.8).next_to(brace2, DOWN).shift(UP*1)
+        f3 = MathTex("x>\\pi", color=BLACK).scale(0.8).next_to(brace3, DOWN).shift(UP*1)
 
         shift_amt = 0.6
         zero_minus = MathTex("0^{-}", color=BLACK).scale(0.8).move_to(zero + LEFT*shift_amt + UP*0.6)
