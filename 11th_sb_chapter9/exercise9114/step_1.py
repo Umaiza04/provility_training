@@ -47,7 +47,7 @@ class Step_1(Scene):
         axes.x_axis.shift(UP*0.18)
 
 
-        sec_middle= axes.plot(lambda x: 1 / np.cos(x),x_range=[-PI/2 + 0.173, PI/2 - 0.173],color="#040273",stroke_width=6).shift(UP*0.17)
+        sec_middle= axes.plot(lambda x: 1 / np.cos(x),x_range=[-PI/2 + 0.173, PI/2 - 0.173,0.07],color="#040273",stroke_width=6,use_smoothing=True,).shift(UP*0.17)
         end_point = sec_middle.get_end()
         micro_tip = ArrowTriangleFilledTip(length=0.2, width=0.15, color="#1F2A7C")
         micro_tip.move_to(end_point).rotate(-PI/2)
@@ -56,21 +56,30 @@ class Step_1(Scene):
         micro_tip = ArrowTriangleFilledTip(length=0.2, width=0.15, color="#1F2A7C")
         micro_tip.move_to(end_point).rotate(-PI/2.1)
         sec_middle.add(micro_tip)
-        sec_left= axes.plot(lambda x: 1 / np.cos(x),x_range=[-PI - 0.45, -PI/2 - 0.4],color="#040273",stroke_width=6)
-        sec_right= axes.plot(lambda x: 1 / np.cos(x),x_range=[PI/2 + 0.4, PI + 0.45],color="#040273",stroke_width=6)
+        sec_left= axes.plot(lambda x: 1 / np.cos(x),x_range=[-PI - 0.45, -PI/2 - 0.4,0.01],color="#040273",stroke_width=6)
+        sec_right= axes.plot(lambda x: 1 / np.cos(x),x_range=[PI/2 + 0.4, PI + 0.45,0.01],color="#040273",stroke_width=6)
 
         dashline1 = DashedLine(
-            axes.c2p(-np.pi/2, -2.6),
+            axes.c2p(-np.pi/2, 0),
             axes.c2p(-np.pi/2, 6),
             color="#9D0216",dash_length=0.1, stroke_width=4 ).shift(RIGHT*0.1)
-
         dashline2 = DashedLine(
-            axes.c2p(np.pi/2, -2.6),
+            axes.c2p(-np.pi/2, -0.7),
+            axes.c2p(-np.pi/2, -2.6),
+            color="#9D0216",dash_length=0.1, stroke_width=4 ).shift(RIGHT*0.1)
+
+        dashline3 = DashedLine(
+            axes.c2p(np.pi/2, 0),
             axes.c2p(np.pi/2, 6),
+            color="#9D0216",
+            dash_length=0.1, stroke_width=4, ).shift(LEFT*0.04)
+        dashline4 = DashedLine(
+            axes.c2p(np.pi/2, -0.7),
+            axes.c2p(np.pi/2, -2.6),
             color="#9D0216",
             dash_length=0.1, stroke_width=4, ).shift(LEFT*0.05)
         dot = Dot(point=axes.c2p(0, 1), color="#CF0234", radius=0.08).shift(UP*0.16)
-        func_label = MathTex(r"f(x) = sec",color=BLACK).next_to(axes.c2p(PI/2, 5.5), UP, buff=0).shift(RIGHT*1.5)
+        func_label = MathTex("f(x) = \\sec x",color=BLACK).next_to(axes.c2p(PI/2, 5.5), UP, buff=0).shift(RIGHT*1.5)
         zero_minus_tex = MathTex("0^-",color=BLACK).move_to(axes.c2p(-1.1, 0.7)).shift(RIGHT*0.5)
         zero_plus_tex = MathTex("0^+", color=BLACK).move_to(axes.c2p(1.1, 0.7)).shift(LEFT*0.5)
         arrow_left = Arrow(
@@ -81,4 +90,4 @@ class Step_1(Scene):
             end=axes.c2p(0.2, 0.4),color="#A87900",stroke_width=3,).shift(LEFT*0.4)
 
         self.add( axes, x_labels, y_labels,x_label,y_label,x_label1,y_label1, dashline1, dashline2, sec_left, sec_middle, sec_right ,func_label 
-                 ,zero_minus_tex,zero_plus_tex,arrow_left, arrow_right ,dot,origin_label,origin_circle)
+                 ,zero_minus_tex,zero_plus_tex,arrow_left, arrow_right ,dot,origin_label,origin_circle,dashline3,dashline4)
