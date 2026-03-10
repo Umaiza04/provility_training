@@ -25,23 +25,25 @@ class Step_1(Scene):
         axes.y_axis.shift(RIGHT*0.2)
         x_label = axes.get_x_axis_label(MathTex("x", color=BLACK)).shift(DOWN*0.35)
         y_label = axes.get_y_axis_label(MathTex("y", color=BLACK)).shift(UP*0.7+LEFT*0.4)
-        x_label1 = axes.get_x_axis_label(MathTex("x'", color=BLACK)).shift(DOWN*5.8+LEFT*5.2)
-        y_label1 = axes.get_y_axis_label(MathTex("y'", color=BLACK)).shift(DOWN*4.5+LEFT*5.8)
+        y_label1 = axes.get_x_axis_label(MathTex("y'", color=BLACK)).shift(DOWN*5.8+LEFT*5.2)
+        x_label1 = axes.get_y_axis_label(MathTex("x'", color=BLACK)).shift(DOWN*4.5+LEFT*5.8)
 
      
         line1 = axes.plot(lambda x: x - 1,
-                          x_range=[-3, -1],
+                          x_range=[-3.5, -1],
                           color="#26538D",
                           stroke_width=4).shift(UP*0.25+RIGHT*0.2)
+        tip1 = Arrow(line1.point_from_proportion(0.2),line1.point_from_proportion(0.001),buff=0,color="#26538D",stroke_width=4).shift(DL*0.03)
 
         line2 = axes.plot(lambda x: x + 1,
-                          x_range=[1, 3],
+                          x_range=[1, 3.5],
                           color="#A0025C",
                           stroke_width=4).shift(UP*0.12+RIGHT*0.13)
+        tip2 = Arrow(line2.point_from_proportion(0.8),line2.point_from_proportion(0.99),buff=0,color="#A0025C",stroke_width=4).set_z_index(-1).shift(UR*0.06)
         def circled_dot(x, y):
             point = axes.c2p(x, y)
             circle = Circle(radius=0.13,color=BLACK,stroke_width=2).move_to(point)
-            dot = Dot(point,radius=0.06,color=BLACK)
+            dot = Dot(point,radius=0.06,color="#6832E3")
             return VGroup(circle, dot)
         point1 = circled_dot(1, 2).shift(UP*0.12+RIGHT*0.13)
         point2 = circled_dot(2, 3).shift(UP*0.12+RIGHT*0.13)
@@ -66,7 +68,7 @@ class Step_1(Scene):
             line1, line2,point1,point2,point3,point4,point5,point6,
             label_dot1, label_dot2,
             label_dot3, label_dot4,label_dot5,label_dot6,
-            label1, label2,x_label1,y_label1
+            label1, label2,x_label1,y_label1,tip1,tip2
         )
         
         
