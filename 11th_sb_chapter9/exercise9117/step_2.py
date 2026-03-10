@@ -167,11 +167,11 @@ class Step_1(Scene):
         
         sine_full = axes2.plot(lambda x: 1*np.sin(x),x_range=[-2.5*PI, 3.5*PI], color="#CF0234", stroke_width=4)
         end_point = sine_full.get_start()
-        micro_tip = ArrowTriangleFilledTip(length=0.15, width=0.16, color="#1F2A7C")
+        micro_tip = ArrowTriangleFilledTip(length=0.15, width=0.16, color="#CF0234")
         micro_tip.move_to(end_point).shift(UP*0.01)
         sine_full.add(micro_tip)
         end_point = sine_full.get_end()
-        micro_tip = ArrowTriangleFilledTip(length=0.15, width=0.16, color="#1F2A7C")
+        micro_tip = ArrowTriangleFilledTip(length=0.15, width=0.16, color="#CF0234")
         micro_tip.move_to(end_point).rotate(PI).shift(UP*0.01)
         sine_full.add(micro_tip)
         sine_label = MathTex("f(x) = \\sin x", color=BLACK).scale(0.8).next_to(axes2.c2p(-PI, 1), UP).shift(RIGHT*5.5)
@@ -233,11 +233,11 @@ class Step_1(Scene):
 
         cosine_full = axes3.plot(lambda x: 1*np.cos(x),x_range=[-2*PI, 2.487*PI], color="#056EEE", stroke_width=4)
         end_point = cosine_full.get_start()
-        micro_tip = ArrowTriangleFilledTip(length=0.15, width=0.16, color="#1F2A7C")
+        micro_tip = ArrowTriangleFilledTip(length=0.15, width=0.16, color="#056EEE")
         micro_tip.move_to(end_point)
         cosine_full.add(micro_tip)
         end_point = cosine_full.get_end()
-        micro_tip = ArrowTriangleFilledTip(length=0.15, width=0.16, color="#1F2A7C")
+        micro_tip = ArrowTriangleFilledTip(length=0.15, width=0.16, color="#056EEE")
         micro_tip.move_to(end_point).rotate(PI/1.7)
         cosine_full.add(micro_tip)
 
