@@ -80,7 +80,7 @@ class Step_1(Scene):
         limit_left1 = MathTex("4^-", color=BLACK).scale(0.6).next_to(arrow3, DOWN, buff=0.1).shift(DOWN*0.04)
         limit_right1 = MathTex("4^+", color=BLACK).scale(0.6).next_to(arrow4, DOWN, buff=0.1)
 
-        points_coords = [(-3, 9), (-2, 4), (-1, 1), (0, 0), (1, 1), (2, 4), (3, 2), (4, 0)]
+        points_coords = [(-3, 9), (-2, 4), (-1, 1), (0, 0), (1, 1), (2, 4), (3, 2), (4, 0),(4,4)]
         dots = VGroup()
         for coord in points_coords:
             dot = Dot(axes.c2p(*coord), color="#CF0234", radius=0.08).shift(UP*0.13)
@@ -94,7 +94,8 @@ class Step_1(Scene):
             MathTex("(3,2)", color=BLACK).scale(0.6).next_to(axes.c2p(3, 2), RIGHT),
             MathTex("(2,4)", color=BLACK).scale(0.6).next_to(axes.c2p(2, 4), UR),
             MathTex("(4,0)", color=BLACK).scale(0.6).next_to(axes.c2p(4, 0), UR),
-            MathTex("(4,4)", color=BLACK).scale(0.6).next_to(axes.c2p(4, 4), RIGHT))
+            MathTex("(4,4)", color=BLACK).scale(0.6).next_to(axes.c2p(4, 4), UR),
+           )
         
         #function
         function = axes.plot(
