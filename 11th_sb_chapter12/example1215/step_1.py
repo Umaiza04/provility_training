@@ -9,6 +9,7 @@ class Step_1(Scene):
         self.camera.background_color = WHITE
         rectangle = Rectangle(width=9, height=5.5, stroke_color="#8D6E63" , 
                          fill_color="#FFF9E5", fill_opacity=1, stroke_width=3)
+        
         s_label = Text("S", color="black", font_size=45).next_to(rectangle, UP, buff=0.2)
     
         circle_1 = Circle(radius=2.0, stroke_color="#8D6E63" , stroke_width=3,
