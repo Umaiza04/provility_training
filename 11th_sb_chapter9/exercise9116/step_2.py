@@ -100,13 +100,13 @@ class Step_1(Scene):
         #function
         function = axes.plot(
             lambda x: 4, 
-            x_range=[0, 7],
+            x_range=[4, 7],
             color="#1F2A7C").shift(UP*0.145).set_z_index(-1)
         end_point = function.get_end()
         micro_tip = ArrowTriangleFilledTip(length=0.35, width=0.25, color="#1F2A7C")
         micro_tip.move_to(end_point).rotate(PI/1)
         function.add(micro_tip)
-        func_label = MathTex("f(x)=4", color=BLACK).scale(0.8).next_to(axes.c2p(0, 4), DOWN, buff=0.2).shift(UR*1)
+        func_label = MathTex("f(x)=4", color=BLACK).scale(0.8).next_to(axes.c2p(4, 4), DOWN, buff=0.2).shift(UP*1+RIGHT*2.5)
 
         self.add(axes, parabola, line, dots, parabola_label, line_label, labels,circle1,circle2,
         arrow1,arrow2,arrow3,arrow4,limit_left ,limit_right,limit_left1 ,limit_right1,function,func_label,
