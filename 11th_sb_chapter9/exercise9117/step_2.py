@@ -82,10 +82,10 @@ class Step_1(Scene):
         cos_curve.add(micro_tip)
         dot1 = Dot(axes.coords_to_point(np.pi, -1),color="#CF0234").shift(UP*0.05)
         vertical_dash = DashedLine(start=axes.coords_to_point(np.pi, 2),end=axes.c2p(PI, 0),color="#AC4F06",dash_length=0.11,stroke_width=4).set_z_index(-1)
-        zero_plus = MathTex(r"0^+",color=BLACK).scale(0.8).move_to(axes.c2p(-1.8, 0.8)).shift(DOWN*4+RIGHT*0.3)
-        zero_minus = MathTex(r"0^-",color=BLACK).scale(0.8).move_to(axes.c2p(0.2, 0.45)).shift(DOWN*3.35+RIGHT*0.2)
-        pi_plus = MathTex("\\pi^+",color=BLACK).scale(0.8).move_to(axes.c2p(-1.8, 0.8)).shift(DOWN*4+RIGHT*4)
-        pi_minus = MathTex("\\pi^-",color=BLACK).scale(0.8).move_to(axes.c2p(0.2, 0.45)).shift(DOWN*3.35+RIGHT*4)
+        zero_plus = MathTex(r"0^-",color=BLACK).scale(0.8).move_to(axes.c2p(-1.8, 0.8)).shift(DOWN*4+RIGHT*0.3)
+        zero_minus = MathTex(r"0^+",color=BLACK).scale(0.8).move_to(axes.c2p(0.2, 0.45)).shift(DOWN*3.35+RIGHT*0.2)
+        pi_plus = MathTex("\\pi^-",color=BLACK).scale(0.8).move_to(axes.c2p(-1.8, 0.8)).shift(DOWN*4+RIGHT*4)
+        pi_minus = MathTex("\\pi^+",color=BLACK).scale(0.8).move_to(axes.c2p(0.2, 0.45)).shift(DOWN*3.35+RIGHT*4)
         label3 = MathTex("f(x)=\\cos x", color=BLACK).move_to(axes.coords_to_point(1.6*np.pi, -2.2)).shift(UP*6).rotate(PI/3.3)
         arrow1 = Arrow(start=axes.coords_to_point(-2.3, -1.0),
                       end=axes.coords_to_point(-0.8, -1.0),
