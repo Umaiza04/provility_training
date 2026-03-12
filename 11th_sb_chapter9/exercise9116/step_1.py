@@ -32,9 +32,12 @@ class Step_1(Scene):
         brace2 = BraceBetweenPoints(line.n2p(-1.6),line.n2p(1.4),direction=DOWN,color=BLACK).shift(DOWN*0.7)
         brace3 = BraceBetweenPoints(line.n2p(1.6),line.n2p(4.7),direction=DOWN,color=BLACK).shift(DOWN*0.7)
 
-        f1 = MathTex("x<=2", color=BLACK).scale(0.8).next_to(brace1, DOWN).shift(UP*1)
+        f1 = MathTex(r"x\le2", color=BLACK).scale(0.8).next_to(brace1, DOWN).shift(UP*1)
         f2 = MathTex("2<x<4", color=BLACK).scale(0.8).next_to(brace2, DOWN).shift(UP*1)
-        f3 = MathTex("x>=4", color=BLACK).scale(0.8).next_to(brace3, DOWN).shift(UP*1)
+        f3 = MathTex(r"x\ge4", color=BLACK).scale(0.8).next_to(brace3, DOWN).shift(UP*1)
+        f4 = MathTex(r"f(x) = x^2", color=BLACK).scale(0.8).next_to(brace1, DOWN)
+        f5 = MathTex(r"f(x) = 8 - 2x", color=BLACK).scale(0.8).next_to(brace2, DOWN)
+        f6 = MathTex(r"f(x) = 4", color=BLACK).scale(0.8).next_to(brace3, DOWN)
 
         shift_amt = 0.6
         two_minus = MathTex("2^{-}", color=BLACK).scale(0.8).move_to(zero + LEFT*shift_amt + UP*0.6)
@@ -48,5 +51,5 @@ class Step_1(Scene):
         arrow3 = Arrow(start=pi_point + LEFT*0.8 + UP*height,end=pi_point + LEFT*0.05 + UP*height,buff=0,stroke_width=2,color="#030AA7").shift(DOWN*0.3+LEFT*0.2)
         arrow4 = Arrow(start=pi_point + RIGHT*0.8 + UP*height,end=pi_point + RIGHT*0.05 + UP*height,buff=0,stroke_width=2,color="#030AA7").shift(DOWN*0.3+RIGHT*0.2)
 
-        self.add(line,label1,label2,two_label, four_label,brace1, brace2, brace3,f1, f2, f3,
+        self.add(line,label1,label2,two_label, four_label,brace1, brace2, brace3,f1, f2, f3,f4,f5,f6,
                  tick1,tick2,two_minus,two_plus,four_minus,four_plus,arrow1 ,arrow2,arrow3,arrow4,circle1,circle2)
