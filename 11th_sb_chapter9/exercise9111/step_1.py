@@ -1,5 +1,3 @@
-from tkinter import Y
-
 from manim import*
 config.frame_height=10
 config.frame_width=12
@@ -55,7 +53,7 @@ class Step_1(Scene):
         three_minus_arrow = Arrow(axes.c2p(-3, 0.5), axes.c2p(2.5, 0.5), color="#A87900", stroke_width=3, tip_length=0.15).shift(RIGHT*0.45)
         three_minus_text = MathTex("3^-", color=BLACK, font_size=34).next_to(three_minus_arrow, UP, buff=0.1).shift(RIGHT*1.65)
 
-        three_plus_arrow = Arrow(axes.c2p(6, 0.5), axes.c2p(3.5, 0.5), color="#A87900", stroke_width=3, tip_length=0.15).shift(LEFT*0.65)
+        three_plus_arrow = Arrow(axes.c2p(6.3,1.5), axes.c2p(4.3, 1.5), color="#A87900", stroke_width=3, tip_length=0.15).shift(LEFT*0.65)
         three_plus_text = MathTex("3^+", color=BLACK, font_size=34).next_to(three_plus_arrow, UP, buff=0.1).shift(LEFT*0.3)
 
         circle = Circle(radius=0.2, color="#1F6357", stroke_width=3).move_to(axes.c2p(3, 0)).shift(DOWN*0.15+LEFT*0.08)
@@ -98,9 +96,6 @@ class Step_1(Scene):
             color="#BB3F3F",
             stroke_width=3,).shift(LEFT*0.086)
         label3 = Text("At x = 3", color=BLACK, font_size=25).rotate(90*DEGREES).next_to(line2, LEFT, buff=0.1)
-        line3 = Line(start=axes.c2p(-1, -1),end=axes.c2p(1, -1), color="#B96902", stroke_width=4).shift(DOWN*0.2)
-        dot3 = Dot(line3.get_start(), color="#6832E3", radius=0.05)
-        dot4 = Dot(line3.get_end(), color="#6832E3", radius=0.05)
-
+        
         self.add( axes, x_label, y_label, x_label1,y_label1, left_curve, right_curve,line1,line2,label1,label2,up_arrow,down_arrow,up_text,down_text,
-                 three_minus_arrow,three_minus_text,three_plus_arrow,three_plus_text,circle,dot1, label3,dot2,line3,dot3,dot4,)
+                 three_minus_arrow,three_minus_text,three_plus_arrow,three_plus_text,circle,dot1, label3,dot2)
