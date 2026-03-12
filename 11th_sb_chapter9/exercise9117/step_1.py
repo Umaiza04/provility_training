@@ -30,8 +30,11 @@ class Step_1(Scene):
         brace3 = BraceBetweenPoints(line.n2p(1.6),line.n2p(4.8),direction=DOWN,color=BLACK).shift(DOWN*0.7)
 
         f1 = MathTex("x<0", color=BLACK).scale(0.8).next_to(brace1, DOWN).shift(UP*1)
-        f2 = MathTex("0<=x<\\pi", color=BLACK).scale(0.8).next_to(brace2, DOWN).shift(UP*1)
+        f2 = MathTex(r"0 \le x < \pi", color=BLACK).scale(0.8).next_to(brace2, DOWN).shift(UP*1)
         f3 = MathTex("x>\\pi", color=BLACK).scale(0.8).next_to(brace3, DOWN).shift(UP*1)
+        f4 = MathTex("f(x)=\\sin x", color=BLACK).scale(0.8).next_to(brace1, DOWN)
+        f5 = MathTex("f(x)=1-\\cos x", color=BLACK).scale(0.8).next_to(brace2, DOWN)
+        f6 = MathTex("f(x)=2\\cos x", color=BLACK).scale(0.8).next_to(brace3, DOWN)
 
         shift_amt = 0.6
         zero_minus = MathTex("0^{-}", color=BLACK).scale(0.8).move_to(zero + LEFT*shift_amt + UP*0.6)
@@ -45,5 +48,5 @@ class Step_1(Scene):
         arrow3 = Arrow(start=pi_point + LEFT*0.8 + UP*height,end=pi_point + LEFT*0.05 + UP*height,buff=0,stroke_width=2,color="#030AA7").shift(DOWN*0.3+LEFT*0.2)
         arrow4 = Arrow(start=pi_point + RIGHT*0.8 + UP*height,end=pi_point + RIGHT*0.05 + UP*height,buff=0,stroke_width=2,color="#030AA7").shift(DOWN*0.3+RIGHT*0.2)
 
-        self.add(line,label1,label2,zero_label, pi_label,brace1, brace2, brace3,f1, f2, f3,
+        self.add(line,label1,label2,zero_label, pi_label,brace1, brace2, brace3,f1, f2, f3,f4,f5,f6,
                  tick_zero,tick_pi,zero_minus,zero_plus,pi_minus,pi_plus,arrow1 ,arrow2,arrow3,arrow4)
