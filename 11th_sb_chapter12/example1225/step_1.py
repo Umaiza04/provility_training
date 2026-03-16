@@ -1,8 +1,8 @@
 from manim import*
 config.frame_height=10
-config.frame_width=15
-config.pixel_width=2500
-config.pixel_height=2500
+config.frame_width=30
+config.pixel_width=2800
+config.pixel_height=2800
 
 class Step_1(Scene):
     def construct(self):
@@ -46,5 +46,48 @@ class Step_1(Scene):
         label3 = MathTex("A_1 \\cap B", color=BLACK).scale(1.5).set_z_index(1).move_to(UP*1 + RIGHT*0.8)
         label4 = MathTex("A_2 \\cap B", color=BLACK).scale(1.5).set_z_index(1).move_to(DOWN*1 + LEFT*0.8)
         B_label = MathTex("B", color=BLACK).scale(1.2).next_to(arrow.get_end(), DOWN).shift(LEFT*0.5+UP*0.3)
+        diagram_group = VGroup(rect,curve,ellipse_outline,top_fill,bottom_fill,arrow,S_label,label1,label2,label3,label4,B_label)
+        diagram_group.shift(LEFT*8.5)
+        self.add(diagram_group)
+        
+        #diagram2
+        outer_box = Rectangle(width=12, height=6, color="#FE46A5",stroke_width=5)
 
-        self.add(rect, ellipse_outline,curve,arrow, S_label,label1,label2,label3,label4, B_label,top_fill,bottom_fill)
+        label1 = Text("Factory", color=BLACK).scale(0.7).next_to(outer_box, UP, buff=0.2)
+        A1 = Text("A1", color=BLACK).scale(0.6).move_to(outer_box.get_top() + DOWN*0.8 + LEFT*3)
+        machine1 = Text("Machine I", color=BLACK).scale(0.6).next_to(A1, DOWN, buff=0.15)
+        box1 = Rectangle(width=3, height=2, color="#7695E2",stroke_width=5).move_to(LEFT*3)
+        p1 = Text("O/P : 40%", color=BLACK).scale(0.55)
+        d1 = Text("Defective : 4%", color=BLACK).scale(0.55)
+        text1 = VGroup(p1, d1).arrange(DOWN, buff=0.2).move_to(box1.get_center())
+
+        A2 = Text("A2", color=BLACK).scale(0.6).move_to(outer_box.get_top() + DOWN*0.8 + RIGHT*3)
+        machine2 = Text("Machine II", color=BLACK).scale(0.6).next_to(A2, DOWN, buff=0.15)
+        box2 = Rectangle(width=3, height=2, color="#7695E2",stroke_width=5).move_to(RIGHT*3)
+        p2 = Text("O/P : 60%", color=BLACK).scale(0.55)
+        d2 = Text("Defective : 5%", color=BLACK).scale(0.55)
+        text2 = VGroup(p2, d2).arrange(DOWN, buff=0.2).move_to(box2.get_center())
+
+        label2 = Text("A1 \u2192 Item from Machine 1", color=BLACK).scale(0.5)
+        label3 = Text("A2 \u2192 Item from Machine 2", color=BLACK).scale(0.5)
+        label4 = Text("B \u2192 Selecting defective item", color=BLACK).scale(0.5)
+
+        explanation = VGroup(label2,label3,label4).arrange(DOWN, aligned_edge=LEFT, buff=0.15).next_to(outer_box, RIGHT, buff=0.5)
+
+        meet_point = DOWN*2.7
+        line1 = Line(box1.get_bottom(), meet_point, color="#E49558").set_z_index(-1)
+        line2 = Line(box2.get_bottom(), meet_point, color="#E49558").set_z_index(-1)
+        arrow = Arrow(meet_point, meet_point + DOWN*1.5, buff=0, color="#E49558",stroke_width=3.5)
+
+        result_box = Rectangle(width=4, height=1.2, color="#DE0C62")
+        result_box.next_to(arrow, DOWN, buff=0.2).shift(UP*0.2)
+        result_text1 = Text("Defective = ?", color=BLACK).scale(0.55)
+        result_text2 = Text("P(B)", color=BLACK).scale(0.55)
+        result_text = VGroup(result_text1, result_text2).arrange(DOWN, buff=0.1)
+        result_text.move_to(result_box.get_center())
+        B1 = Text("B :", color=BLACK).scale(0.6).next_to(box1, LEFT, buff=0.3)
+        B2 = Text("B :", color=BLACK).scale(0.6).next_to(box2, LEFT, buff=0.3)
+
+        factory_diagram = VGroup( outer_box,label1, A1, machine1, A2, machine2, box1, box2, text1, text2,
+            explanation,line1, line2,arrow,result_box,result_text,B1,B2 ).shift(RIGHT*4)
+        self.add(factory_diagram)
